@@ -1,0 +1,12 @@
+#include <iostream>
+
+int main() 
+{
+    using namespace std;
+    float P=3.141516, radio, Area; 
+    std::cout << "introduzca el radio: " ;
+        cin >> radio;
+        Area=P*radio*radio;
+        cout << "El area es: " << Area;
+        return 0;
+}
