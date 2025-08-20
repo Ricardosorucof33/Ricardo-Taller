@@ -2,17 +2,16 @@
 using namespace std;
 
 int main() {
-    // Declarar la variable para el peso de la carta
-    double P;
+    
+     P;
 
-    // Pedir al usuario el peso de la carta en gramos
     cout << "Ingrese el peso de la carta en gramos: ";
     cin >> P;
 
-    // Verificar el peso y calcular el costo
+    
     if (P > 0 && P < 50) {
         cout << "Costo de envio: Bs. 1.50" << endl;
-    } 
+    }
     else if (P >= 50 && P <= 100) {
         cout << "Costo de envio: Bs. 4.00" << endl;
     }
@@ -34,3 +33,4 @@ int main() {
 
     return 0;
 }
+ 
