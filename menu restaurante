@@ -1,0 +1,56 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int a, b, c, d, opcion;
+    float e = 3, f = 5, g = 2, h = 2.5;
+
+    while (true) {
+        cout << "**************************************" << endl;
+        cout << "Bienvenido a nuestro restaurante" << endl;
+        cout << "Desea realizar un pedido? (1 = Si, 0 = No): ";
+        cin >> opcion;
+
+        switch (opcion) {
+        case 1:
+            cout << "El menu y los precios son los siguientes:" << endl;
+            cout << "Hamburguesas: 3 Bs" << endl;
+            cout << "Hamburguesas con queso: 5 Bs" << endl;
+            cout << "Papas fritas: 2 Bs" << endl;
+            cout << "Soda: 2.5 Bs" << endl;
+
+            cout << "Cuantas hamburguesas desea? ";
+            cin >> a;
+
+            cout << "Cuantas hamburguesas con queso desea? ";
+            cin >> b;
+
+            cout << "Cuantas papas fritas desea? ";
+            cin >> c;
+
+            cout << "Cuantas sodas desea? ";
+            cin >> d;
+
+            cout << "Su orden seria:" << endl;
+            cout << a << " Hamburguesas = Bs " << a * e << endl;
+            cout << b << " Hamburguesas con queso = Bs " << b * f << endl;
+            cout << c << " Papas fritas = Bs " << c * g << endl;
+            cout << d << " Sodas = Bs " << d * h << endl;
+
+            cout << "El total de su orden sería: Bs " << a * e + b * f + c * g + d * h << endl;
+            cout << "¡Gracias por su pedido!\n";
+            break;
+
+        case 0:
+            cout << "Gracias por visitarnos. Hasta pronto!" << endl;
+            return 0;
+
+        default:
+            cout << "Opción no válida. Intente de nuevo.";
+            break;
+        }
+    }
+
+    return 0;
+}
