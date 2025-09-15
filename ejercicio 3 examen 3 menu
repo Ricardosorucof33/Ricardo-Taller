@@ -1,0 +1,50 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int opcion;
+    int cantidadA, cantidadB, cantidadC;
+    float total, descuento, totalFinal;
+
+    cout << "MENU" << endl;
+    cout << "1. Calcular total de la compra" << endl;
+    cout << "2. Salir" << endl;
+    cout << "Ingrese una opcion: ";
+    cin >> opcion;
+
+    switch(opcion) {
+        case 1:
+            cout << "Ingrese la cantidad de productos A (10 Bs cada uno): ";
+            cin >> cantidadA;
+            cout << "Ingrese la cantidad de productos B (20 Bs cada uno): ";
+            cin >> cantidadB;
+            cout << "Ingrese la cantidad de productos C (30 Bs cada uno): ";
+            cin >> cantidadC;
+
+            total = (cantidadA * 10) + (cantidadB * 20) + (cantidadC * 30);
+            descuento = 0;
+
+            if (total > 100) {
+                descuento = descuento + (total * 0.10);
+            }
+
+            if ((cantidadA + cantidadB + cantidadC) > 5) {
+                descuento = descuento + 5;
+            }
+
+            totalFinal = total - descuento;
+
+            cout << "El total final a pagar es: " << totalFinal << " Bs." << endl;
+            break;
+
+        case 2:
+            cout << "Saliendo..." << endl;
+            break;
+
+        default:
+            cout << "Opcion invalida" << endl;
+            break;
+    }
+
+    return 0;
+}
