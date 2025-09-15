@@ -1,0 +1,33 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int opcion;
+    float nota;
+
+    cout << "MENU" << endl;
+    cout << "1. Verificar si el estudiante aprueba" << endl;
+    cout << "2. Salir" << endl;
+    cout << "Ingrese una opcion: ";
+    cin >> opcion;
+
+    switch(opcion) {
+        case 1:
+            cout << "Ingrese la nota final del estudiante (sobre 100): ";
+            cin >> nota;
+            if (nota >= 51) {
+                cout << "El estudiante aprueba." << endl;
+            } else {
+                cout << "El estudiante reprueba." << endl;
+            }
+            break;
+        case 2:
+            cout << "Saliendo..." << endl;
+            break;
+        default:
+            cout << "Opcion invalida" << endl;
+            break;
+    }
+
+    return 0;
+}
