@@ -1,0 +1,10 @@
+print("Escriba 5 numeros enteros")
+A=float(input("INGRESE EL PRIMER NUMERO "))
+B=float(input("INGRESE EL SEGUNDO NUMERO "))
+C=float(input("INGRESE EL TERCER NUMERO "))
+D=float(input("INGRESE EL CUARTO NUMERO "))
+E=float(input("INGRESE EL QUINTO NUMERO "))
+F=(A+B+C+D+E)/5
+print("EL PROMEDIO DE LOS NUMEROS: ",A,B,C,D,E)
+print("Es= ",F)
+
