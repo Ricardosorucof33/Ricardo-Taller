@@ -1,11 +1,12 @@
-include <iostream>
+#include <iostream>
 using namespace std;
 
 int main() {
     int i, n, suma = 0;
-
-    cout << "Ingrese valor de n: ";
-    cin >> n;
+    do {
+        cout << "Ingrese valor de n: ";
+        cin >> n;
+    } while (n<=0) ;
 
     for (i = 1; i <= n; i++) {
         if (i % 2 != 0)
