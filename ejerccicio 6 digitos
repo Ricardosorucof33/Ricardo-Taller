@@ -1,0 +1,29 @@
+#include  using namespace std;
+
+int main() {
+    int n, digito, suma;
+    char continuar;
+
+    do {
+        suma = 0;
+        cout << "Escriba un numero con digitos en base 8: ";
+        cin >> n;
+
+        while (n > 0) {
+            digito = n % 10;
+            n = n / 10;
+            if (digito > 7) {
+                cout << "hay un digito que no tiene base 8" << endl;
+                break;
+            }
+        }
+        if(digito <= 7)
+        cout << "Todos los digitos son en base 8" << endl;
+        cout << "¿Desea ingresar otro numero? (s/n): ";
+        cin >> continuar;
+
+    } while (continuar == 's' || continuar == 'S');
+
+    cout << "¡Adiós!" << endl;
+    return 0;
+}
