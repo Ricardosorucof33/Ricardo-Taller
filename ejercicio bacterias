@@ -1,0 +1,22 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    double bacterias = 1.0;
+    double total = 1.0;
+    int hora = 0;
+
+    cout << "HORA\tNUEVAS BACTERIAS\tTOTAL\n";
+
+    while (hora <= 60) {
+        double nuevasBacterias = bacterias;
+        cout << hora << "\t" << nuevasBacterias << "\t\t" << total << endl;
+        bacterias =bacterias * 2;
+        total =total + bacterias;
+        hora = hora + 5;
+    }
+
+    cout << "\nEl total acumulado de bacterias después de 60 horas es: " << total << endl;
+
+    return 0;
+}
