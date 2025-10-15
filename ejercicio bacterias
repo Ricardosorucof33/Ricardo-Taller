@@ -10,13 +10,13 @@ int main() {
 
     while (hora <= 60) {
         double nuevasBacterias = bacterias;
-        cout << hora << "\t" << nuevasBacterias << "\t\t" << total << endl;
+        cout << hora << "\t" << nuevasBacterias << "\t\t\t" << total << endl;
         bacterias =bacterias * 2;
-        total =total + bacterias;
+        total = bacterias;
         hora = hora + 5;
     }
 
-    cout << "\nEl total acumulado de bacterias después de 60 horas es: " << total << endl;
+    cout << "El total acumulado de bacterias después de 60 horas es: " << total << endl;
 
     return 0;
 }
