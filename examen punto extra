@@ -1,0 +1,78 @@
+#include <iostream>
+#define MAX 50
+#include <cmath>
+void dist(int x1, int y1, int x2, int y2);
+void impar(int n);
+void notas(int vec[], int n);
+using namespace std;
+int main()
+{
+    int opcion, vec[MAX], n, x1, y1, x2, y2;
+    do {
+        cout << "seleccione una opcion" << endl;
+        cout << "1 para calcular la suma de impares" << endl;
+        cout << "2 para hallar la distancia entre puntos" << endl;
+        cout << "3 para cargar notas" << endl;
+        cout << "0 para salir" << endl;
+        cin >> opcion;
+        switch (opcion) {
+        case 1:
+            cout << "ingrese hasta que n impares desea la suma" << endl;
+            cin >> n;
+            impar(n);
+            break;
+        case 2:
+            cout << "ingrese las coordenadas x1,y1,x2,y2" << endl;
+            cin >> x1 >> y1 >> x2 >> y2;
+            dist(x1, y1, x2, y2);
+            break;
+        case 3:
+            do {
+                cout << "ingrese numero de alumnos" << endl;
+                cin >> n;
+            } while (n<0 or n>MAX);
+            cout << "ingrese las notas" << endl;
+            for (int i = 0; i < n; i++)
+                cin >> vec[i];
+            notas(vec, n);
+            break;
+        case 0:
+            cout << "saliendo...";
+            break;
+        default:
+            cout << "opcion incorrecta";
+        }
+    } while (opcion != 0);
+    return 0;
+}
+void dist(int x1, int y1, int x2, int y2) {
+    double distancia = sqrt(pow((x1 - x2), 2) + pow((y1 - y2), 2));
+    cout << "la distancia es " << distancia << endl;
+}
+void impar(int n) {
+    int suma = 0, j = 1, i = 0;
+    do {
+        if (j % 2 != 0) {
+            suma += j;
+            i++;
+        }
+        j++;
+    } while (i < n);
+    cout << "la suma es " << suma << endl;;
+}
+void notas(int vec[], int n) {
+    int promedio = 0, mayor = vec[0], menor = vec[0];
+    for (int i = 0; i < n; i++)
+        promedio += vec[i];
+    cout << "el promedio es " << promedio/n<<endl;
+    for (int i = 0; i < n; i++) {
+        if (vec[i] > mayor)
+            mayor = vec[i];
+    }
+    cout << "El mayor es " << mayor << endl;;
+    for (int i = 0; i < n; i++) {
+        if (vec[i] < menor)
+            menor = vec[i];
+    }
+    cout << "El menor es " << menor << endl;;
+}
