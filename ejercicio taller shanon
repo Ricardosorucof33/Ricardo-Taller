@@ -1,0 +1,28 @@
+#include <iostream>
+#include <string>
+using namespace std;
+void leer(string &frase, string &caracter);
+int encontrar(string frase, string caracter);
+
+int main()
+{
+   string frase, caracter;
+   int num;
+leer (frase, caracter);
+encontrar (frase, caracter);
+    return 0;
+}
+void leer(string &frase, string &caracter) {
+   cout << "Ingrese la frase: " << endl;
+   getline(cin, frase);  
+   cout << "Ingrese el caracter: " << endl;
+   cin >> caracter;  
+}
+int encontrar(string frase, string caracter) {
+    int num=0;
+   for(int i=0;i<frase.length();i++)
+   if (frase.at(i)==caracter[0])
+   num++;
+   cout<<"el caracter sale en la palabra "<<num<<" veces"<<endl;
+   return num;
+}
