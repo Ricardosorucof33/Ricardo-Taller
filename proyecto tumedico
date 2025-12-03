@@ -1,0 +1,231 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+/* ===================== PROTOTIPOS DE FUNCIONES ===================== */
+void menuPrincipal();
+void menuAdministrador(string pacientes[], int& cantPac, string medicos[], int& cantMed, string consultas[], int& cantCon);
+void menuMedico(string pacientes[], int cantPac, string consultas[], int cantCon);
+void menuPaciente(string pacientes[], int cantPac, string consultas[], int cantCon);
+
+void registrarPaciente(string pacientes[], int& cantPac);
+void registrarMedico(string medicos[], int& cantMed);
+void crearConsulta(string pacientes[], int cantPac, string medicos[], int cantMed, string consultas[], int& cantCon);
+
+void listarPacientes(string pacientes[], int cantPac);
+void listarMedicos(string medicos[], int cantMed);
+void listarConsultas(string consultas[], int cantCon);
+
+/* ============================== MAIN ============================== */
+int main() {
+    const int MAX = 100;
+
+    string pacientes[MAX];
+    string medicos[MAX];
+    string consultas[MAX];
+
+    int cantPac = 0;
+    int cantMed = 0;
+    int cantCon = 0;
+
+    menuPrincipal();
+
+    int opcion;
+    do {
+        cout << "\n== Plataforma de Gestion de Consultas ==" << endl;
+        cout << "1. Administrador" << endl;
+        cout << "2. Medico" << endl;
+        cout << "3. Paciente" << endl;
+        cout << "0. Salir" << endl;
+        cout << "Opcion: ";
+        cin >> opcion;
+
+        switch(opcion) {
+            case 1:
+                menuAdministrador(pacientes, cantPac, medicos, cantMed, consultas, cantCon);
+                break;
+            case 2:
+                menuMedico(pacientes, cantPac, consultas, cantCon);
+                break;
+            case 3:
+                menuPaciente(pacientes, cantPac, consultas, cantCon);
+                break;
+            case 0:
+                cout << "Saliendo del sistema..." << endl;
+                break;
+            default:
+                cout << "Opcion invalida." << endl;
+        }
+
+    } while(opcion != 0);
+
+    return 0;
+}
+
+/* ===================== DEFINICIÓN DE FUNCIONES ===================== */
+
+void menuPrincipal() {
+    cout << "=====================================\n";
+    cout << "     Sistema de Gestion Medica\n";
+    cout << "=====================================\n";
+}
+
+void menuAdministrador(string pacientes[], int& cantPac, string medicos[], int& cantMed, string consultas[], int& cantCon) {
+    int op;
+    do {
+        cout << "\n--- Menu Administrador ---" << endl;
+        cout << "1. Registrar Paciente" << endl;
+        cout << "2. Registrar Medico" << endl;
+        cout << "3. Crear Consulta" << endl;
+        cout << "4. Listar Pacientes" << endl;
+        cout << "5. Listar Medicos" << endl;
+        cout << "6. Listar Consultas" << endl;
+        cout << "0. Volver" << endl;
+        cout << "Opcion: ";
+        cin >> op;
+
+        switch(op) {
+            case 1: registrarPaciente(pacientes, cantPac); break;
+            case 2: registrarMedico(medicos, cantMed); break;
+            case 3: crearConsulta(pacientes, cantPac, medicos, cantMed, consultas, cantCon); break;
+            case 4: listarPacientes(pacientes, cantPac); break;
+            case 5: listarMedicos(medicos, cantMed); break;
+            case 6: listarConsultas(consultas, cantCon); break;
+            case 0: break;
+            default: cout << "Opcion invalida." << endl;
+        }
+    } while(op != 0);
+}
+
+void menuMedico(string pacientes[], int cantPac, string consultas[], int cantCon) {
+    int op;
+    do {
+        cout << "\n--- Menu Medico ---" << endl;
+        cout << "1. Ver Pacientes" << endl;
+        cout << "2. Ver Consultas" << endl;
+        cout << "0. Volver" << endl;
+        cout << "Opcion: ";
+        cin >> op;
+
+        switch(op) {
+            case 1: listarPacientes(pacientes, cantPac); break;
+            case 2: listarConsultas(consultas, cantCon); break;
+            case 0: break;
+            default: cout << "Opcion invalida." << endl;
+        }
+    } while(op != 0);
+}
+
+void menuPaciente(string pacientes[], int cantPac, string consultas[], int cantCon) {
+    int op;
+    do {
+        cout << "\n--- Menu Paciente ---" << endl;
+        cout << "1. Ver Pacientes Registrados" << endl;
+        cout << "2. Ver Consultas" << endl;
+        cout << "0. Volver" << endl;
+        cout << "Opcion: ";
+        cin >> op;
+
+        switch(op) {
+            case 1: listarPacientes(pacientes, cantPac); break;
+            case 2: listarConsultas(consultas, cantCon); break;
+            case 0: break;
+            default: cout << "Opcion invalida." << endl;
+        }
+    } while(op != 0);
+}
+
+void registrarPaciente(string pacientes[], int& cantPac) {
+    if(cantPac >= 100) {
+        cout << "No se pueden registrar mas pacientes." << endl;
+        return;
+    }
+
+    string nombre;
+    cout << "Ingrese nombre del paciente: ";
+    cin.ignore();
+    getline(cin, nombre);
+
+    pacientes[cantPac] = nombre;
+    cout << "Paciente registrado con ID: " << cantPac << endl;
+    cantPac++;
+}
+
+void registrarMedico(string medicos[], int& cantMed) {
+    if(cantMed >= 100) {
+        cout << "No se pueden registrar mas medicos." << endl;
+        return;
+    }
+
+    string nombre;
+    cout << "Ingrese nombre del medico: ";
+    cin.ignore();
+    getline(cin, nombre);
+
+    medicos[cantMed] = nombre;
+    cout << "Medico registrado con ID: " << cantMed << endl;
+    cantMed++;
+}
+
+void crearConsulta(string pacientes[], int cantPac, string medicos[], int cantMed, string consultas[], int& cantCon) {
+    if(cantPac == 0 || cantMed == 0) {
+        cout << "Debe haber al menos 1 paciente y 1 medico registrados." << endl;
+        return;
+    }
+
+    if(cantCon >= 100) {
+        cout << "No se pueden registrar mas consultas." << endl;
+        return;
+    }
+
+    int idPaciente, idMedico;
+    cout << "Ingrese ID del paciente: ";
+    cin >> idPaciente;
+    cout << "Ingrese ID del medico: ";
+    cin >> idMedico;
+
+    if(idPaciente < 0 || idPaciente >= cantPac || idMedico < 0 || idMedico >= cantMed) {
+        cout << "IDs invalidos." << endl;
+        return;
+    }
+
+    consultas[cantCon] = "Paciente: " + pacientes[idPaciente] + " - Medico: " + medicos[idMedico];
+    cout << "Consulta creada con ID: " << cantCon << endl;
+    cantCon++;
+}
+
+void listarPacientes(string pacientes[], int cantPac) {
+    if(cantPac == 0) {
+        cout << "No hay pacientes registrados." << endl;
+        return;
+    }
+
+    cout << "\n--- Lista de Pacientes ---" << endl;
+    for(int i = 0; i < cantPac; i++) {
+        cout << "ID " << i << ": " << pacientes[i] << endl;
+    }
+}
+
+void listarMedicos(string medicos[], int cantMed) {
+    if(cantMed == 0) {
+        cout << "No hay medicos registrados." << endl;
+        return;
+    }
+
+    cout << "\n--- Lista de Medicos ---" << endl;
+    for(int i = 0; i < cantMed; i++) {
+        cout << "ID " << i << ": " << medicos[i] << endl;
+    }
+}
+
+void listarConsultas(string consultas[], int cantCon) {
+    if(cantCon == 0) {
+        cout << "No hay consultas registradas." << endl;
+        return;
+    }
+
+    cout << "\n--- Lista de Consultas ---" << endl;
+    for(int i = 0; i < cantCon; i++) {
+        cout << "ID " << i << ": " << consultas[i] << endl;
+    }
+}
